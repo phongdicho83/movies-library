@@ -12,7 +12,7 @@ export default function Home() {
     async function load() {
       setLoading(true);
       try {
-        const data = await tmdb("movie/popular");
+        const data = await tmdb("movie/now_playing");
         if (!ignore) setMovies(data.results || []);
       } catch (e) {
         if (!ignore) setError(e.message || "Failed to load");
@@ -26,7 +26,6 @@ export default function Home() {
     };
   }, []);
 
-  if (loading) return <p>Loading popular movies…</p>;
   if (error) return <p className="error">{error}</p>;
 
   return (

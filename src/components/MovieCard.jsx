@@ -16,9 +16,12 @@ export default function MovieCard({ movie }) {
       )}
       <div className="card-body">
         <h3>{movie.title}</h3>
-        {movie.vote_average > 0 && (
-          <p className="muted">⭐ {movie.vote_average.toFixed(1)}</p>
-        )}
+        <div className="card-footer">
+          {movie.vote_average > 0 && (
+            <span className="muted">⭐ {movie.vote_average.toFixed(1)}</span>
+          )}
+          {/* Genres could be added here later */}
+        </div>
       </div>
     </Link>
   );

@@ -32,9 +32,12 @@
 .card-body h3 {
   font-size: 14px;
   margin: 0;
-  flex-grow: 1; /* Pushes rating to the bottom */
+  flex-grow: 1; /* Pushes footer to the bottom */
 }
 
-.card-body .muted {
-  margin: 8px 0 0;
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
 }
