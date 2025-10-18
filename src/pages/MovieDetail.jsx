@@ -6,6 +6,7 @@ import './MovieDetail.css'
 export default function MovieDetail() {
   const { id } = useParams() // grab the :id from URL
   const [movie, setMovie] = useState(null)
+  const [isTrailerOpen, setIsTrailerOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -14,7 +15,7 @@ export default function MovieDetail() {
     async function load() {
       setLoading(true)
       try {
-        const data = await tmdb(`movie/${id}`)
+        const data = await tmdb(`movie/${id}`, { append_to_response: 'videos' })
         if (!ignore) setMovie(data)
       } catch (e) {
         if (!ignore) setError(e.message || 'Failed to load movie details')
@@ -29,6 +30,10 @@ export default function MovieDetail() {
   if (loading) return <p>Loading details…</p>
   if (error) return <p className="error">{error}</p>
   if (!movie) return null
+
+  const trailer = movie?.videos?.results?.find(
+    (vid) => vid.site === 'YouTube' && (vid.type === 'Trailer' || vid.type === 'Teaser')
+  )
 
   const formatRuntime = (minutes) => {
     const h = Math.floor(minutes / 60)
@@ -59,6 +64,11 @@ export default function MovieDetail() {
         <div className="movie-detail-info">
           <h1>{movie.title}</h1>
           {movie.tagline && <p className="tagline">{movie.tagline}</p>}
+          {trailer && (
+            <button onClick={() => setIsTrailerOpen(true)} className="play-trailer-btn">
+              ▶️ Play Trailer
+            </button>
+          )}
           <div className="meta">
             {movie.vote_average > 0 && (
               <span>⭐ {movie.vote_average.toFixed(1)}</span>
@@ -79,6 +89,23 @@ export default function MovieDetail() {
           <p>{movie.overview}</p>
         </div>
       </div>
+      {isTrailerOpen && trailer && (
+        <div className="trailer-modal-overlay" onClick={() => setIsTrailerOpen(false)}>
+          <div className="trailer-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={() => setIsTrailerOpen(false)}>
+              &times;
+            </button>
+            <iframe
+              src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&rel=0`}
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              title="Movie Trailer"
+              className="trailer-iframe"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

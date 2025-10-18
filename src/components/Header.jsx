@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
+import SearchInput from './SearchInput'
 
 const navs = {
   Movies: {
@@ -48,9 +49,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="search">
-          <input type="text" placeholder="Search..." />
-        </div>
+        <SearchInput />
       </div>
     </header>
   )

@@ -66,4 +66,22 @@
 /* Push search to the right */
 .search {
   margin-left: auto;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  pointer-events: none; /* Prevents the icon from blocking input clicks */
+}
+
+.search input {
+  /* Assuming global input styles exist, we add padding here */
+  padding-left: 36px; /* Make space for the icon */
+  width: 250px; /* Or any width you prefer */
 }
