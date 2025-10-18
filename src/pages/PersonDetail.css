@@ -1,0 +1,117 @@
+.person-detail-container {
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.person-detail-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.person-detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.person-detail-poster-wrapper {
+  width: 100%;
+}
+
+.person-detail-poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.person-info-sidebar h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  margin-bottom: 1.5rem;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.info-item p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0.25rem 0;
+}
+
+.person-detail-main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.biography-section {
+  margin-bottom: 3rem;
+}
+
+.biography-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.biography-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ddd;
+  white-space: pre-line;
+}
+
+.known-for-section {
+  margin-top: 3rem;
+}
+
+.known-for-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.known-for-scroller {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .person-detail-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .person-detail-sidebar {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+  }
+
+  .person-detail-main h1 {
+    font-size: 2rem;
+  }
+
+  .known-for-scroller {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .person-detail-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .known-for-scroller {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
