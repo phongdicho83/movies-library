@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { tmdb, img } from "../utils/tmdb";
 import "./MovieDetail.css";
+//Components
+import MovieCard from "../components/MovieCard";
 
 export default function MovieDetail() {
   const { id } = useParams(); // grab the :id from URL
@@ -16,7 +18,7 @@ export default function MovieDetail() {
       setLoading(true);
       try {
         const data = await tmdb(`movie/${id}`, {
-          append_to_response: "videos,credits",
+          append_to_response: "videos,credits,similar",
         });
         if (!ignore) setMovie(data);
       } catch (e) {
@@ -98,7 +100,7 @@ export default function MovieDetail() {
           <p>{movie.overview}</p>
         </div>
       </div>
-
+      {/* Top Billed Cast section */}
       {movie.credits?.cast?.length > 0 && (
         <div className="cast-section container">
           <h3>Top Billed Cast</h3>
@@ -118,7 +120,17 @@ export default function MovieDetail() {
           </div>
         </div>
       )}
-
+      {/*  Similar movies section */}
+      {movie.similar?.results?.length > 0 && (
+        <div className="similar-movies-section container">
+          <h3>Similar Movies</h3>
+          <div className="movies-scroller">
+            {movie.similar.results.map((similarMovie) => (
+              <MovieCard key={similarMovie.id} movie={similarMovie} />
+            ))}
+          </div>
+        </div>
+      )}
       {isTrailerOpen && trailer && (
         <div
           className="trailer-modal-overlay"

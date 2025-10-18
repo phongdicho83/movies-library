@@ -202,7 +202,7 @@
   }
 }
 
-/* Cast Section */
+/* Top Billed Cast Section */
 .cast-section {
   margin-top: 40px;
 }
@@ -244,4 +244,27 @@
 .cast-member span {
   padding: 0 0.5rem 0.5rem;
   color: #aaa;
+}
+
+/* Similar Movies Section */
+.similar-movies-section {
+  margin-top: 40px;
+}
+
+.similar-movies-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.movies-scroller {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Adjust MovieCard size inside the scroller */
+.movies-scroller .card {
+  width: 150px;
+  flex-shrink: 0;
 }
