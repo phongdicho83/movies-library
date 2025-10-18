@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import MovieDetail from './pages/MovieDetail.jsx'
 import ListPage from './pages/ListPage.jsx'
@@ -17,6 +18,7 @@ function App() {
           <Route path="/:type/:category" element={<ListPage />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
