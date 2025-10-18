@@ -4,6 +4,7 @@ import { tmdb } from "../utils/tmdb";
 import MovieCard from "../components/MovieCard";
 import TvShowCard from "../components/TvShowCard";
 import PersonCard from "../components/PersonCard";
+import LoadMore from "../components/LoadMore";
 
 // A map to translate URL parts to API paths and titles
 const config = {
@@ -25,6 +26,7 @@ const config = {
 export default function ListPage() {
   const { type, category } = useParams();
   const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -32,34 +34,47 @@ export default function ListPage() {
 
   useEffect(() => {
     if (!current) return;
+    setItems([]);
+    setPage(1);
+    setError(null);
+  }, [current]);
+
+  useEffect(() => {
+    if (!current) return;
 
     let ignore = false;
     async function load() {
-      setLoading(true);
+      // Chỉ hiển thị loading cho lần tải đầu tiên của một danh mục
+      if (page === 1) setLoading(true);
       try {
-        const data = await tmdb(current.path);
+        const data = await tmdb(current.path, { page });
         if (!ignore) {
-          let items = data.results || [];
+          let newItems = data.results || [];
           // If the type is person, filter out anyone without a profile picture
-          if (type === 'person') {
-            items = items.filter(person => person.profile_path);
+          if (type === "person") {
+            newItems = newItems.filter((person) => person.profile_path);
           }
-          setItems(items);
+          setItems((prevItems) => [...prevItems, ...newItems]);
         }
       } catch (e) {
         if (!ignore) setError(e.message || "Failed to load");
       } finally {
-        if (!ignore) setLoading(false);
+        if (!ignore && page === 1) setLoading(false);
       }
     }
     load();
     return () => {
       ignore = true;
     };
-  }, [current]);
+  }, [current, page]);
+
+  function handleLoadMore() {
+    setPage((prevPage) => prevPage + 1);
+  }
 
   if (!current) return <p className="error">Sorry, this page doesn't exist.</p>;
-  if (loading) return <p>Loading…</p>;
+  // Hiển thị loading chỉ khi đang tải trang đầu tiên
+  if (page === 1 && loading) return <p>Loading…</p>;
   if (error) return <p className="error">{error}</p>;
 
   const renderCard = (item) => {
@@ -78,7 +93,14 @@ export default function ListPage() {
   return (
     <section>
       <h1>{current.title}</h1>
-      <div className="flex">{items.map(renderCard)}</div>
+      <div className="flex">
+        {items.length > 0 ? (
+          items.map(renderCard)
+        ) : (
+          !loading && <p>No items found.</p>
+        )}
+      </div>
+      <LoadMore show={items.length > 0} onLoadMore={handleLoadMore} />
     </section>
   );
 }
