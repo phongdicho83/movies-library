@@ -170,6 +170,17 @@ export default function MovieDetail() {
           )}
         </div>
       </div>
+      {/* Phim tương tự (Similar Movies) */}
+      {movie.similar?.results?.length > 0 && (
+        <div className="similar-movies-section container">
+          <h3>Similar Movies</h3>
+          <div className="movies-scroller">
+            {movie.similar.results.map((similarMovie) => (
+              <MovieCard key={similarMovie.id} movie={similarMovie} />
+            ))}
+          </div>
+        </div>
+      )}
       {/* Dàn diễn viên chính (Top Billed Cast) */}
       {movie.credits?.cast?.length > 0 && (
         <div className="cast-section container">
@@ -187,17 +198,6 @@ export default function MovieDetail() {
                   <span>{person.character}</span>
                 </div>
               ))}
-          </div>
-        </div>
-      )}
-      {/* Phim tương tự (Similar Movies) */}
-      {movie.similar?.results?.length > 0 && (
-        <div className="similar-movies-section container">
-          <h3>Similar Movies</h3>
-          <div className="movies-scroller">
-            {movie.similar.results.map((similarMovie) => (
-              <MovieCard key={similarMovie.id} movie={similarMovie} />
-            ))}
           </div>
         </div>
       )}
