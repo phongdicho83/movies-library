@@ -73,13 +73,6 @@ h1 {
   color: var(--muted);
   font-size: 12px;
 }
-
-/* Flexbox Grid System */
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
 /* 
  grid thay thế cho flexbox */
 .item-grid {
