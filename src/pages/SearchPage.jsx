@@ -36,7 +36,10 @@ export default function SearchPage() {
         const data = await tmdb("search/multi", { query, page });
         if (!ignore) {
           const validItems = (data.results || []).filter(
-            (item) => item.media_type === "movie" || item.media_type === "tv" || (item.media_type === "person" && item.profile_path)
+            (item) =>
+              item.media_type === "movie" ||
+              item.media_type === "tv" ||
+              (item.media_type === "person" && item.profile_path)
           );
           setItems((prevItems) => [...prevItems, ...validItems]);
         }
@@ -72,8 +75,15 @@ export default function SearchPage() {
   return (
     <section>
       <h1>Search Results for "{query}"</h1>
-      <div className="flex">{items.length > 0 ? items.map(renderCard) : !loading && <p>No results found.</p>}</div>
-      <LoadMore show={items.length > 0} onLoadMore={() => setPage((p) => p + 1)} />
+      <div className="item-grid">
+        {items.length > 0
+          ? items.map(renderCard)
+          : !loading && <p>No results found.</p>}
+      </div>
+      <LoadMore
+        show={items.length > 0}
+        onLoadMore={() => setPage((p) => p + 1)}
+      />
     </section>
   );
 }

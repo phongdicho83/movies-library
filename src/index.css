@@ -6,17 +6,27 @@
   --accent: #22c55e;
 }
 
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .container {
   max-width: 1200px;
@@ -42,9 +52,12 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: 10px;
 }
 
-.brand { font-weight: 800; letter-spacing: 0.5px; }
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
 
-.search input { 
+.search input {
   background: #0f1420;
   border: 1px solid #1f2937;
   padding: 8px 10px;
@@ -52,8 +65,14 @@ a { color: inherit; text-decoration: none; }
   border-radius: 8px;
 }
 
-h1 { font-size: 22px; margin: 16px 0; }
-.muted { color: var(--muted); font-size: 12px; }
+h1 {
+  font-size: 22px;
+  margin: 16px 0;
+}
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
 
 /* Flexbox Grid System */
 .flex {
@@ -61,10 +80,16 @@ h1 { font-size: 22px; margin: 16px 0; }
   flex-wrap: wrap;
   gap: 16px;
 }
-
-.flex > * {
-  flex: 1 1 160px; /* flex-grow, flex-shrink, flex-basis */
-  min-width: 160px; /* Prevents cards from getting too small */
+/* 
+ grid thay thế cho flexbox */
+.item-grid {
+  display: grid;
+  /* Tạo các cột có chiều rộng tối thiểu 180px và tự động lấp đầy không gian */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.3rem; /* Khoảng cách giữa các thẻ */
+  padding: 1rem 0;
 }
 
-.error { color: #f87171; }
+.error {
+  color: #f87171;
+}

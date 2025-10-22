@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <section>
       <h1>Popular Movies</h1>
-      <div className="flex">
+      <div className="item-grid">
         {movies.length > 0 ? (
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
         ) : (

@@ -58,15 +58,12 @@ export default function ListPage(props) {
       if (page === 1) setLoading(true);
       try {
         const data = await tmdb(current.path, { page });
-        
         if (!ignore) {
           let newItems = data.results || [];
-          
           // Nếu là danh sách người (person), lọc những người không có ảnh đại diện
           if (type === "person") {
             newItems = newItems.filter((person) => !!person.profile_path);
           }
-          
           setItems((prevItems) => [...prevItems, ...newItems]);
         }
       } catch (e) {
@@ -86,9 +83,12 @@ export default function ListPage(props) {
     // Xử lý nút "Load more": tăng trang để tải thêm kết quả và nối vào danh sách hiện tại
     setPage((prevPage) => prevPage + 1);
   }
-
   if (!current) {
-    return <p className="error">Sorry, this page doesn't exist or is not configured.</p>;
+    return (
+      <p className="error">
+        Sorry, this page doesn't exist or is not configured.
+      </p>
+    );
   }
 
   // Chỉ hiển thị Loading khi đang tải trang đầu tiên
@@ -116,7 +116,7 @@ export default function ListPage(props) {
     <section>
       {/* Tiêu đề danh sách lấy từ config tương ứng */}
       <h1>{current.title}</h1>
-      <div className="flex">
+      <div className="item-grid">
         {/* Hiển thị danh sách thẻ, hoặc thông báo khi không có kết quả */}
         {items.length > 0
           ? items.map(renderCard)
