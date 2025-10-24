@@ -15,7 +15,7 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Reset state when the search query changes
+  // Reset trạng thái khi search thay đổi
   useEffect(() => {
     setItems([]);
     setPage(1);

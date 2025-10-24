@@ -20,7 +20,6 @@ export default function MovieCard({ movie }) {
           {movie.vote_average > 0 && (
             <span className="muted">⭐ {movie.vote_average.toFixed(1)}</span>
           )}
-          {/* Genres could be added here later */}
         </div>
       </div>
     </Link>
