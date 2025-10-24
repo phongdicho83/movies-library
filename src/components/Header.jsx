@@ -1,26 +1,26 @@
-import { Link, NavLink } from 'react-router-dom'
-import './Header.css'
-import SearchInput from './SearchInput'
+import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
+import SearchInput from "./SearchInput";
 
 const navs = {
   Movies: {
-    popular: 'Popular',
-    upcoming: 'Upcoming',
-    'top-rated': 'Top Rated',
+    popular: "Popular",
+    upcoming: "Upcoming",
+    "top-rated": "Top Rated",
   },
-  'TV Shows': {
-    popular: 'Popular',
-    'on-tv': 'On TV',
-    'top-rated': 'Top Rated',
+  "TV Shows": {
+    popular: "Popular",
+    "on-tv": "On TV",
+    "top-rated": "Top Rated",
   },
-}
+};
 
 export default function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
         <Link to="/" className="brand">
-          TMDB Clone
+          KhoPhim
         </Link>
 
         <nav>
@@ -32,7 +32,7 @@ export default function Header() {
                   {Object.entries(links).map(([path, text]) => (
                     <NavLink
                       key={path}
-                      to={`/${label.toLowerCase().replace(' ', '')}/${path}`}
+                      to={`/${label.toLowerCase().replace(" ", "")}/${path}`}
                       className="dropdown-link"
                     >
                       {text}
@@ -52,5 +52,5 @@ export default function Header() {
         <SearchInput />
       </div>
     </header>
-  )
+  );
 }
