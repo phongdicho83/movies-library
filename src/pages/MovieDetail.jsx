@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { tmdb, img } from "../utils/tmdb";
 import "./MovieDetail.css";
@@ -189,14 +189,22 @@ export default function MovieDetail() {
             {movie.credits.cast
               .filter((person) => person.profile_path)
               .map((person) => (
-                <div key={person.id} className="cast-member">
-                  <img
-                    src={img(person.profile_path, "w185")}
-                    alt={person.name}
-                  />
-                  <strong>{person.name}</strong>
-                  <span>{person.character}</span>
-                </div>
+                <Link
+                  to={`/person/${person.id}`}
+                  key={person.id}
+                  className="cast-member-link"
+                >
+                  <div className="cast-member">
+                    <img
+                      src={img(person.profile_path, "w185")}
+                      alt={person.name}
+                    />
+                    <div className="cast-member-info">
+                      <strong>{person.name}</strong>
+                      <span>{person.character}</span>
+                    </div>
+                  </div>
+                </Link>
               ))}
           </div>
         </div>

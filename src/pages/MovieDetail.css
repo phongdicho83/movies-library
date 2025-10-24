@@ -202,7 +202,7 @@
   }
 }
 
-/* Top Billed Cast Section */
+/* Thẻ Top Billed Cast  */
 .cast-section {
   margin-top: 40px;
 }
@@ -219,6 +219,18 @@
   gap: 1rem;
 }
 
+/* Styles link */
+.cast-member-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.cast-member-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 .cast-member {
   display: flex;
   flex-direction: column;
@@ -228,6 +240,7 @@
   border-radius: 8px;
   overflow: hidden;
   font-size: 0.9rem;
+  height: 100%;  /* Đảm bảo thẻ chiếm toàn bộ chiều cao của Link wrapper */
 }
 
 .cast-member img {
@@ -235,6 +248,13 @@
   height: 175px;
   object-fit: cover;
   display: block;
+}
+/* Đây là class mới bao bọc tên diễn viên và nhân vật */
+.cast-member-info {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Cho phép phần này giãn ra để lấp đầy không gian */
 }
 
 .cast-member strong {
