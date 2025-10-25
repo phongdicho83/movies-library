@@ -1,0 +1,290 @@
+.movie-detail-container {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.backdrop-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50vh;
+  max-height: 500px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg) 10%, transparent 80%);
+}
+
+.movie-detail-content {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+  padding-top: 80px;
+}
+
+.movie-detail-poster {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.movie-detail-info h1 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.tagline {
+  font-style: italic;
+  color: #b0b8c4; /* Brighter than muted */
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+.meta {
+  display: flex;
+  gap: 20px; /* Increased gap */
+  align-items: center;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 1.05em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.genre {
+  background: var(--panel);
+  border: 1px solid #1f2937;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.movie-detail-info h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-detail-content {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+    gap: 20px;
+  }
+  .movie-detail-poster-wrapper {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  .movie-detail-info {
+    text-align: center;
+  }
+  .meta,
+  .genres {
+    justify-content: center;
+  }
+}
+
+.play-trailer-btn {
+  background-color: rgb(38, 170, 237);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.play-trailer-btn:hover {
+  background-color: #3aa6f8;
+}
+
+.trailer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+.trailer-modal-content {
+  position: relative;
+  background-color: black;
+  padding: 0;
+  width: 90%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  cursor: default;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+.trailer-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Thẻ Top Billed Cast  */
+.cast-section {
+  margin-top: 40px;
+}
+
+.cast-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.cast-scroller {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Styles link */
+.cast-member-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.cast-member-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cast-member {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  flex-shrink: 0;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.9rem;
+  height: 100%;  /* Đảm bảo thẻ chiếm toàn bộ chiều cao của Link wrapper */
+}
+
+.cast-member img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  display: block;
+}
+/* Đây là class mới bao bọc tên diễn viên và nhân vật */
+.cast-member-info {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Cho phép phần này giãn ra để lấp đầy không gian */
+}
+
+.cast-member strong {
+  padding: 0.5rem 0.5rem 0.25rem;
+}
+
+.cast-member span {
+  padding: 0 0.5rem 0.5rem;
+  color: #aaa;
+}
+
+/* Similar Movies Section */
+.similar-movies-section {
+  margin-top: 40px;
+}
+
+.similar-movies-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.movies-scroller {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Adjust MovieCard size inside the scroller */
+.movies-scroller .card {
+  width: 150px;
+  flex-shrink: 0;
+}

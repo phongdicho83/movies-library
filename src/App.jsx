@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Home from "./pages/Home.jsx";
+import MovieDetail from "./pages/MovieDetail.jsx";
+import TvShowDetail from "./pages/TvShowDetail.jsx";
+import PersonDetail from "./pages/PersonDetail.jsx";
+import ListPage from "./pages/ListPage.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("Route changed to:", location.pathname);
+  }, [location]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Header />
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/tv/:id" element={<TvShowDetail />} />
+          <Route path="/person/:id" element={<PersonDetail />} />
+          <Route path="/search" element={<SearchPage />} />
+          {/* Specific route for People page */}
+          <Route
+            path="/person/popular"
+            element={<ListPage type="person" category="popular" />}
+          />
+          {/* Generic route for other list types */}
+          <Route path="/:type/:category" element={<ListPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

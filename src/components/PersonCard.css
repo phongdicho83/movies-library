@@ -1,0 +1,48 @@
+.person-card {
+  background: var(--panel);
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Override flex-basis for a 4-column layout */
+  /* 100% / 4 columns = 25% width per item */
+  /* calc(25% - (gap * (num_columns - 1) / num_columns)) */
+  flex-basis: calc(25% - 12px);
+  min-width: 200px; /* Prevent getting too small on resize */
+}
+
+.person-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.person-card img, .person-card .placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  object-position: top;
+  background: #111827;
+}
+
+.person-card-body {
+  padding: 12px;
+}
+
+.person-card-body h3 {
+  font-size: 15px;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.known-for {
+  font-size: 12px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

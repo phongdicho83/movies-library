@@ -1,16 +1,53 @@
-# React + Vite
+# Movie Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple movie library application built with React and Vite. It allows users to browse and search for movies.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse popular movies
+- Search for movies by title
+- View movie details
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v14 or later)
+- npm or yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/movies-library.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd movies-library
+   ```
+3. Install the dependencies:
+   ```sh
+   npm install
+   ```
+
+### Running the Application
+
+To start the development server, run:
+
+```sh
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` or through your environment file.
+
+## Project Structure
+
+- `src/components`: Contains reusable UI components.
+- `src/pages`: Contains the main pages of the application.
+- `src/utils`: Contains utility functions, such as API clients.
+- `src/assets`: Contains static assets, such as images.
+
+## Technologies Used
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
