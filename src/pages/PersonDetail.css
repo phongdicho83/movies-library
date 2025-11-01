@@ -4,10 +4,19 @@
 }
 
 .person-detail-content {
-  display: grid;
-  grid-template-columns: 300px 1fr;
+  display: flex;
   gap: 3rem;
   margin-top: 2rem;
+}
+
+.person-detail-sidebar {
+  flex: 0 0 300px;
+  /* Không grow hoặc shrink, width cố định */
+}
+
+.person-detail-main {
+  flex: 1;
+  /* Chiếm không gian còn lại */
 }
 
 .person-detail-sidebar {
@@ -78,40 +87,64 @@
   margin-bottom: 1.5rem;
 }
 
-.known-for-scroller {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+.known-for-container {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
-/* Responsive design */
+.known-for-container .flex-item {
+  flex: 1 1 150px;
+  /* grow | shrink | min-width */
+  max-width: calc(20% - 1.2rem);
+  /* 5 cột trên màn hình lớn */
+}
+
+/* Thiết kế responsive */
 @media (max-width: 768px) {
   .person-detail-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 2rem;
   }
 
   .person-detail-sidebar {
-    display: grid;
-    grid-template-columns: 200px 1fr;
+    flex: none;
+    display: flex;
     gap: 2rem;
+  }
+
+  .person-detail-poster-wrapper {
+    flex: 0 0 200px;
+  }
+
+  .person-info-sidebar {
+    flex: 1;
   }
 
   .person-detail-main h1 {
     font-size: 2rem;
   }
 
-  .known-for-scroller {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  .known-for-container .flex-item {
+    max-width: calc(33.333% - 1rem);
+    /* 3 cột trên màn hình trung bình */
+    flex-basis: 120px;
   }
 }
 
 @media (max-width: 480px) {
   .person-detail-sidebar {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
-  .known-for-scroller {
-    grid-template-columns: repeat(2, 1fr);
+  .person-detail-poster-wrapper {
+    flex: none;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .known-for-container .flex-item {
+    max-width: calc(50% - 0.75rem);
+    /* 2 cột trên mobile */
   }
 }

@@ -3,7 +3,8 @@
   color: var(--muted);
   text-align: center;
   padding: 25px 20px;
-  margin-top: 50px; /* Add some space above the footer */
+  margin-top: 50px;
+  /* Thêm khoảng cách phía trên footer */
   border-top: 1px solid #1f2937;
   font-size: 0.9rem;
 }

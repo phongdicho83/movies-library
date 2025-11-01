@@ -39,7 +39,7 @@
   padding: 8px;
   min-width: 180px;
   z-index: 20;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   opacity: 0;
   transform: translateY(10px);
   visibility: hidden;
@@ -63,7 +63,7 @@
   background: #1f2937;
 }
 
-/* Push search to the right */
+/* Đẩy search sang bên phải */
 .search {
   margin-left: auto;
   position: relative;
@@ -77,11 +77,14 @@
   width: 16px;
   height: 16px;
   color: var(--muted);
-  pointer-events: none; /* Prevents the icon from blocking input clicks */
+  pointer-events: none;
+  /* Ngăn icon chặn click vào input */
 }
 
 .search input {
-  /* Assuming global input styles exist, we add padding here */
-  padding-left: 36px; /* Make space for the icon */
-  width: 250px; /* Or any width you prefer */
+  /* Giả sử đã có global input styles, thêm padding ở đây */
+  padding-left: 36px;
+  /* Tạo không gian cho icon */
+  width: 250px;
+  /* Hoặc width tùy thích */
 }
