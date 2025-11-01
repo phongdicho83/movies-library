@@ -9,6 +9,7 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body,
 #root {
@@ -69,18 +70,47 @@ h1 {
   font-size: 22px;
   margin: 16px 0;
 }
+
 .muted {
   color: var(--muted);
   font-size: 12px;
 }
-/* 
- grid thay thế cho flexbox */
-.item-grid {
-  display: grid;
-  /* Tạo các cột có chiều rộng tối thiểu 180px và tự động lấp đầy không gian */
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.3rem; /* Khoảng cách giữa các thẻ */
+
+/* Layout flexbox cho container card responsive */
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem;
   padding: 1rem 0;
+}
+
+/* Styling cho flex item - áp dụng cho các card trong container */
+.flex-item {
+  flex: 1 1 180px;
+  /* grow | shrink | min-width */
+  max-width: calc(25% - 1rem);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .flex-item {
+    max-width: calc(33.333% - 1rem);
+    /* 3 cột */
+  }
+}
+
+@media (max-width: 768px) {
+  .flex-item {
+    max-width: calc(50% - 0.65rem);
+    /* 2 cột */
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-item {
+    max-width: 100%;
+    /* 1 cột */
+  }
 }
 
 .error {
