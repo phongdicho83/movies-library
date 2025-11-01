@@ -7,7 +7,7 @@ export default function PersonCard({ person }) {
     person.known_for?.map((item) => item.title || item.name).join(", ") || "";
 
   return (
-    <Link to={`/person/${person.id}`} className="person-card">
+    <Link to={`/person/${person.id}`} className="person-card flex-item">
       {person.profile_path ? (
         <img
           src={img(person.profile_path, "w342")}

@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <section>
       <h1>Popular Movies</h1>
-      <div className="item-grid">
+      <div className="item-container">
         {movies.length > 0 ? (
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
         ) : (

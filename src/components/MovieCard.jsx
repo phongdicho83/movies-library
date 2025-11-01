@@ -4,7 +4,7 @@ import "./MovieCard.css";
 
 export default function MovieCard({ movie }) {
   return (
-    <Link to={`/movie/${movie.id}`} className="card">
+    <Link to={`/movie/${movie.id}`} className="card flex-item">
       {movie.poster_path ? ( // If poster_path is available, show it, else show placeholder
         <img
           src={img(movie.poster_path, "w342")}
