@@ -28,10 +28,19 @@
 }
 
 .movie-detail-content {
-  display: grid;
-  grid-template-columns: 250px 1fr;
+  display: flex;
   gap: 40px;
   padding-top: 80px;
+}
+
+.movie-detail-poster-wrapper {
+  flex: 0 0 250px;
+  /* Không grow hoặc shrink, width cố định */
+}
+
+.movie-detail-info {
+  flex: 1;
+  /* Chiếm không gian còn lại */
 }
 
 .movie-detail-poster {
@@ -48,7 +57,8 @@
 
 .tagline {
   font-style: italic;
-  color: #b0b8c4; /* Brighter than muted */
+  color: #b0b8c4;
+  /* Sáng hơn màu muted */
   margin-top: 0;
   margin-bottom: 24px;
   font-size: 1.1em;
@@ -57,7 +67,8 @@
 
 .meta {
   display: flex;
-  gap: 20px; /* Increased gap */
+  gap: 20px;
+  /* Tăng khoảng cách */
   align-items: center;
   color: var(--muted);
   margin-bottom: 20px;
@@ -91,20 +102,24 @@
   margin-top: 0;
 }
 
-/* Responsive adjustments */
+/* Điều chỉnh responsive */
 @media (max-width: 768px) {
   .movie-detail-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     padding-top: 40px;
     gap: 20px;
   }
+
   .movie-detail-poster-wrapper {
+    flex: none;
     max-width: 200px;
     margin: 0 auto;
   }
+
   .movie-detail-info {
     text-align: center;
   }
+
   .meta,
   .genres {
     justify-content: center;
@@ -187,15 +202,18 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 @keyframes zoomIn {
   from {
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -219,7 +237,7 @@
   gap: 1rem;
 }
 
-/* Styles link */
+/* Styles cho link */
 .cast-member-link {
   text-decoration: none;
   color: inherit;
@@ -240,7 +258,8 @@
   border-radius: 8px;
   overflow: hidden;
   font-size: 0.9rem;
-  height: 100%;  /* Đảm bảo thẻ chiếm toàn bộ chiều cao của Link wrapper */
+  height: 100%;
+  /* Đảm bảo thẻ chiếm toàn bộ chiều cao của Link wrapper */
 }
 
 .cast-member img {
@@ -249,12 +268,14 @@
   object-fit: cover;
   display: block;
 }
+
 /* Đây là class mới bao bọc tên diễn viên và nhân vật */
 .cast-member-info {
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Cho phép phần này giãn ra để lấp đầy không gian */
+  flex-grow: 1;
+  /* Cho phép phần này giãn ra để lấp đầy không gian */
 }
 
 .cast-member strong {
@@ -266,7 +287,7 @@
   color: #aaa;
 }
 
-/* Similar Movies Section */
+/* Section phim tương tự */
 .similar-movies-section {
   margin-top: 40px;
 }
@@ -283,7 +304,7 @@
   gap: 1rem;
 }
 
-/* Adjust MovieCard size inside the scroller */
+/* Điều chỉnh kích thước MovieCard trong scroller */
 .movies-scroller .card {
   width: 150px;
   flex-shrink: 0;

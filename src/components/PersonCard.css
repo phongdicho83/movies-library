@@ -6,19 +6,20 @@
   display: block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  /* Override flex-basis for a 4-column layout */
-  /* 100% / 4 columns = 25% width per item */
-  /* calc(25% - (gap * (num_columns - 1) / num_columns)) */
+  /* Styling flexbox item cho layout responsive */
+  /* Flexible basis với min-width để responsive tốt hơn */
   flex-basis: calc(25% - 12px);
-  min-width: 200px; /* Prevent getting too small on resize */
+  min-width: 200px;
+  /* Ngăn không cho quá nhỏ khi resize */
 }
 
 .person-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.person-card img, .person-card .placeholder {
+.person-card img,
+.person-card .placeholder {
   display: block;
   width: 100%;
   aspect-ratio: 2/3;

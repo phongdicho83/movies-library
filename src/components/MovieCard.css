@@ -10,7 +10,7 @@
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card img,
@@ -26,13 +26,15 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allows body to fill space */
+  flex-grow: 1;
+  /* Cho phép body lấp đầy không gian */
 }
 
 .card-body h3 {
   font-size: 14px;
   margin: 0;
-  flex-grow: 1; /* Pushes footer to the bottom */
+  flex-grow: 1;
+  /* Đẩy footer xuống dưới cùng */
 }
 
 .card-footer {
