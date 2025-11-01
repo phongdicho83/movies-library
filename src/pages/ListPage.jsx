@@ -116,7 +116,7 @@ export default function ListPage(props) {
     <section>
       {/* Tiêu đề danh sách lấy từ config tương ứng */}
       <h1>{current.title}</h1>
-      <div className="item-grid">
+      <div className="item-container">
         {/* Hiển thị danh sách thẻ, hoặc thông báo khi không có kết quả */}
         {items.length > 0
           ? items.map(renderCard)

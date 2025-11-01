@@ -4,7 +4,7 @@ import "./MovieCard.css"; // Reusing the same styles for consistency
 
 export default function TvShowCard({ show }) {
   return (
-    <Link to={`/tv/${show.id}`} className="card">
+    <Link to={`/tv/${show.id}`} className="card flex-item">
       {show.poster_path ? (
         <img
           src={img(show.poster_path, "w342")}

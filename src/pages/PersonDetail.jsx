@@ -86,8 +86,8 @@ export default function PersonDetail() {
                   {person.gender === 1
                     ? "Female"
                     : person.gender === 2
-                    ? "Male"
-                    : "Other"}
+                      ? "Male"
+                      : "Other"}
                 </p>
               </div>
             )}
@@ -150,7 +150,7 @@ export default function PersonDetail() {
           {sortedCredits.length > 0 && (
             <div className="known-for-section">
               <h2>Known For</h2> {/* Các tác phẩm tiêu biểu, ưu tiên theo popularity */}
-              <div className="known-for-scroller">
+              <div className="known-for-container">
                 {sortedCredits.map((credit) => {
                   if (credit.media_type === "movie") {
                     return (

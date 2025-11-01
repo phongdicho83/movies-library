@@ -22,7 +22,7 @@ export default function SearchPage() {
     setError(null);
   }, [query]);
 
-  // Fetch search results
+  // Lấy kết quả tìm kiếm
   useEffect(() => {
     if (!query) {
       setLoading(false);
@@ -75,7 +75,7 @@ export default function SearchPage() {
   return (
     <section>
       <h1>Search Results for "{query}"</h1>
-      <div className="item-grid">
+      <div className="item-container">
         {items.length > 0
           ? items.map(renderCard)
           : !loading && <p>No results found.</p>}
