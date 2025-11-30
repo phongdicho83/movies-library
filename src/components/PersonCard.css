@@ -3,14 +3,9 @@
   border: 1px solid #1f2937;
   border-radius: 10px;
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  /* Styling flexbox item cho layout responsive */
-  /* Flexible basis với min-width để responsive tốt hơn */
-  flex-basis: calc(25% - 12px);
-  min-width: 200px;
-  /* Ngăn không cho quá nhỏ khi resize */
 }
 
 .person-card:hover {
@@ -30,6 +25,10 @@
 
 .person-card-body {
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Cho phép body lấp đầy không gian */
 }
 
 .person-card-body h3 {
@@ -38,6 +37,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-grow: 1;
+  /* Đẩy nội dung known-for xuống dưới */
 }
 
 .known-for {

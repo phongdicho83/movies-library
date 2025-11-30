@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { tmdb } from "../utils/tmdb";
 import MovieCard from "../components/MovieCard";
 import LoadMore from "../components/LoadMore";
+import FilteredTvShowSearch from "../components/FilteredTvShowSearch";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showFilteredTv, setShowFilteredTv] = useState(false);
 
   useEffect(() => {
     let ignore = false;
@@ -40,6 +42,15 @@ export default function Home() {
 
   return (
     <section>
+      <button 
+        onClick={() => setShowFilteredTv(!showFilteredTv)}
+        style={{ marginBottom: '20px', padding: '10px 20px', cursor: 'pointer' }}
+      >
+        câu 1
+      </button>
+      
+      {showFilteredTv && <FilteredTvShowSearch />}
+      
       <h1>Popular Movies</h1>
       <div className="item-container">
         {movies.length > 0 ? (
